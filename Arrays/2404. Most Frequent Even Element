@@ -1,0 +1,38 @@
+class Solution {
+    public int mostFrequentEven(int[] nums) {
+
+        Map<Integer, Integer> countEven = new TreeMap<>();
+
+        for(int n : nums)
+        {
+            if(!((n&1) == 1))
+            {
+                countEven.put(n,countEven.getOrDefault(n,0)+1);
+            }
+
+        }
+
+        int ans = -1 , freq = 0;
+        for (Map.Entry<Integer, Integer> items : countEven.entrySet()) 
+        { 
+
+        int key = items.getKey();  
+        int value = items.getValue(); 
+
+        if(value > freq){
+            ans = key;
+            freq = value;
+        }
+
+        }
+
+        return ans;
+
+
+
+
+
+
+        
+    }
+}
