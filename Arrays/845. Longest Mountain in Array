@@ -1,0 +1,57 @@
+class Solution {
+    public int longestMountain(int[] arr) {
+        
+        int largest = 0;
+        int i = 1;
+        int count = 0;
+        int lngth = arr.length;
+        int j = 0;
+
+        while (i<lngth-1){
+           // count = 0;
+            if(arr[i]>arr[i-1] & arr[i]>arr[i+1])
+            {
+                count = 1;
+                j = i;
+
+                while(j>0)
+                {
+                    if(arr[j] > arr[j-1])
+                    {
+                        count++;
+                        j--;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                while(i < lngth-1)
+                {
+                    if(arr[i] > arr[i+1])
+                    {
+                        count++;
+                        i++;
+                    }  
+                    else
+                    {
+                        break;
+                    }
+
+                }
+
+            largest = Math.max(count,largest);
+            }
+            else{
+                i++;
+            }
+
+        }
+
+
+
+        return largest;
+
+    }
+}
