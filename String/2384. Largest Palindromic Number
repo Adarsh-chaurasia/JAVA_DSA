@@ -1,0 +1,43 @@
+class Solution {
+    public String largestPalindromic(String num) 
+    {
+        int[] freq = new int[10];
+
+        for(char c : num.toCharArray()){
+            freq[c - '0']++;
+        }
+
+        StringBuilder leftHalf = new StringBuilder();
+        String middle = "";
+
+        for(int i = 9 ; i>=0; i--)
+        {
+            int pairs = freq[i]/2;
+
+            for(int j = 0 ; j<pairs ; j++){
+                leftHalf.append(i);
+            }
+
+            freq[i]-=pairs*2;
+        }
+
+        for(int i = 9 ; i>=0 ; i--){
+            if(freq[i] > 0){
+                middle = String.valueOf(i);
+                break;}
+        }
+
+        while(leftHalf.length() > 0 && leftHalf.charAt(0) == '0')
+        {
+            leftHalf.deleteCharAt(0);
+        }
+
+        if(leftHalf.length() ==0 && middle == "") return "0";
+
+
+        String rightHalf = new StringBuilder(leftHalf).reverse().toString();
+        return leftHalf.toString() + middle + rightHalf;
+
+
+    }
+}
