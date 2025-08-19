@@ -1,0 +1,34 @@
+class Solution {
+    public int longestPalindrome(String s) {
+
+        Map<Character , Integer> counter = new TreeMap<>();
+
+        for(int i = 0 ; i < s.length(); i++)
+        {
+            Character each = s.charAt(i);
+            counter.put(each , counter.getOrDefault(each , 0)+1);
+        }
+        int count = 0;
+        int odd = 0;
+
+        for(Map.Entry<Character,Integer> items : counter.entrySet())
+        {
+            int freq = items.getValue();
+
+            if(!((freq&1) == 1))
+            {
+                count += freq;
+            }
+            else
+            {
+                count +=freq-1;
+                odd = 1;
+            }
+        }
+
+        if(odd == 1)
+            return count+1;
+        return count;
+        
+    }
+}
