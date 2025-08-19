@@ -1,0 +1,23 @@
+class Solution {
+    public boolean checkIfExist(int[] arr) {
+
+        List<Integer> numbers = new ArrayList<>();
+
+        for(int each : arr)
+        {   
+            if(numbers.contains(each))
+                return true;
+
+            else{
+                numbers.add(each*2);
+                if(each % 2 ==0)
+                    numbers.add(each/2);
+            }
+
+        }
+
+        return false;
+
+        
+    }
+}
