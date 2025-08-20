@@ -1,0 +1,40 @@
+class Solution {
+    public void gameOfLife(int[][] board) 
+    {
+        int rows = board.length;
+        int cols = board[0].length;
+        int[][] directions = {{1,0},{-1,0},{0,1},{0,-1},{1,1},{1,-1},{-1,1},{-1,-1}};
+
+
+        for (int r = 0; r < rows; r++) {
+        for (int c = 0; c < cols; c++) {
+            int liveNeighbors = 0;
+            for (int[] d : directions) {
+                int nr = r + d[0], nc = c + d[1];
+                if (nr >= 0 && nr < rows && nc >= 0 && nc < cols) {
+                    if (board[nr][nc] == 1 || board[nr][nc] == -1)  {
+                        liveNeighbors++;
+                    }
+                }
+            }
+
+            if (board[r][c] == 1 && (liveNeighbors < 2 || liveNeighbors > 3)) board[r][c] = -1;  // 2-> Die;
+            if ( board[r][c] == 0 && liveNeighbors == 3) board[r][c] = 2;  // 3 -> Live
+            
+            }
+        }
+    
+    for (int r = 0; r < rows; r++) 
+    {
+        for (int c = 0; c < cols; c++)
+        {
+            if (board[r][c] == -1) board[r][c] = 0;
+            else if (board[r][c] == 2) board[r][c] = 1;
+
+        }        
+    }
+
+   
+        
+    }
+}
