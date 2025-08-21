@@ -1,0 +1,40 @@
+class Solution {
+    public int numberOfBeams(String[] bank) 
+    {
+        List<Integer> counter = new ArrayList<>();
+        int count = 0;
+        int prev =0;
+
+        for(String each : bank)
+        {
+            char[] array = each.toCharArray();
+            int freq= 0 ;
+
+            for(Character ch : array)
+            {
+                if(ch == '1')
+                {
+                    freq++;
+                }
+            }
+
+            counter.add(freq);
+
+        }
+
+        for(int i = 0 ; i<counter.size() ; i++)
+        {   
+            if(counter.get(i) == 0) continue;
+            
+            count += prev*counter.get(i);
+            prev = counter.get(i);
+            
+           
+        }
+
+        return count;
+
+
+       
+    }
+}
