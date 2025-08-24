@@ -1,4 +1,7 @@
-if(nums.length % k != 0) return false;
+class Solution {
+    public boolean partitionArray(int[] nums, int k) {
+
+        if(nums.length % k != 0) return false;
         
         Map<Integer , Integer> numbers = new HashMap<>();
 
@@ -14,4 +17,10 @@ if(nums.length % k != 0) return false;
 
         
         return true;
-©leetcode
+
+        
+
+        
+        
+    }
+}
